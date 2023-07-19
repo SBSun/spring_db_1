@@ -32,7 +32,7 @@ class ConnectionTest {
 
     @Test
     void dataSourceConnectionPool() throws SQLException, InterruptedException {
-        // Connection Pooling
+        // 커넥션 풀링: HikariProxyConnection(Proxy) -> JdbcConnection(Target)
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setJdbcUrl(URL);
         dataSource.setUsername(USERNAME);
@@ -56,7 +56,6 @@ class ConnectionTest {
         Connection connection8 = dataSource.getConnection();
         Connection connection9 = dataSource.getConnection();
         Connection connection10 = dataSource.getConnection();
-        Connection connection11 = dataSource.getConnection();
         log.info("connection = {}, class = {}", connection1, connection1.getClass());
         log.info("connection = {}, class = {}", connection2, connection2.getClass());
     }
