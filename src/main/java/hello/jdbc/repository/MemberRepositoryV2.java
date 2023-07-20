@@ -75,16 +75,13 @@ public class MemberRepositoryV2 {
 
     public Member findById(Connection con, String memberId) throws SQLException{
         String sql = "SELECT * FROM member WHERE member_id = ?";
-
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
         try{
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, memberId);
-
             rs = pstmt.executeQuery();
-            // 무조건 한번 next 메서드를 호출해줘야 한다.
             if(rs.next()){
                 Member member = new Member();
                 member.setMemberId(rs.getString("member_id"));
@@ -127,7 +124,6 @@ public class MemberRepositoryV2 {
 
     public void update(Connection con, String memberId, int money) throws SQLException{
         String sql = "UPDATE member SET money = ? WHERE member_id = ?";
-
         PreparedStatement pstmt = null;
         int result = 0;
 
